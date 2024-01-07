@@ -36,6 +36,23 @@ h2 {
   margin-bottom: 0.25em;
 }
 
+h4 {
+  font-family: "Georgia", serif;
+  font-weight: 100;
+  font-style: italic;
+  font-size: 1em;
+  line-height: 1.2em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+p {
+  font-family: "Georgia", serif;
+  font-weight: 100;
+  line-height: 1.5;
+  font-size: 0.9em;
+}
+
 li {
   margin: 10px 0;
 }
@@ -92,4 +109,44 @@ hr.style1 {
 .header {
   grid-column: 1 / 4;
   grid-row: 1;
+}
+
+.sidebar {
+  grid-column: 1 / 2;
+  max-height: 50%;
+  background-color: #f1f1f1;
+  padding-left: 12px;
+  border: 1px solid black;
+}
+
+.line {
+  grid-column: 1 / 4;
+}
+
+@media (min-width: 550px) {
+  .wrapper {
+    grid-template-columns: 2fr 4fr;
+    grid-column-gap: 2em;
+    grid-row-gap: 20px;
+  }
+
+  .header {
+    grid-column: 1 / 4;
+    grid-row: 1 / 2;
+  }
+
+  .sidebar {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+
+  .content {
+    grid-column: 2 / 4;
+    grid-row: 2 / 3;
+  }
+
+  .line {
+    grid-column: 1 / 4;
+    grid-row: 3 / 4;
+  }
 }
