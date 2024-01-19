@@ -5,7 +5,7 @@ import flash from "express-flash";
 import passport from "passport";
 import session from "express-session";
 import methodOverride from "method-override";
-
+require("./auth");
 const app = express();
 app.use(express.json());
 app.set("view-engine", "ejs");
@@ -72,6 +72,26 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
 app.delete("/logout", (req, res) => {
   req.logOut();
   res.redirect("/login");
+});
+
+app.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["email", "profile"] })
+);
+
+app.get(
+  "/auth/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/auth/google/success",
+    failureRedirect: "/login",
+  }),
+  function (req, res) {
+    res.redirect("/");
+  }
+);
+app.get("/auth/google/success", (_req, res) => {
+  res.write("Logged in");
+  res.end;
 });
 
 function checkAuthenticated(req, res, next) {
