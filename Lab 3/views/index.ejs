@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Authentication Example</title>
+  </head>
+  <body>
+    <h1>Authentication Example</h1>
+
+    <% if (user) { %>
+    <p>Hi <%= user.email %>, you are logged in.</p>
+    <a href="/logout">Logout</a>
+    <% } else { %>
+    <p>You are not logged in.</p>
+    <a href="/login">Login</a> | <a href="/register">Register</a>
+    <br />
+    <a href="/auth/google">Login with Google</a>
+    <% } %>
+  </body>
+</html>
